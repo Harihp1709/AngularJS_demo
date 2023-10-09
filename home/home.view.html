@@ -1,0 +1,18 @@
+﻿<style>
+    body {
+        background-image: url('../Image/pexels-larissa-farber-8027652.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<h3>Hi {{vm.user.firstName}}!</h3>
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li>{{vm.IsAuth}}</li>
+    <li ng-repeat="user in vm.allUsers">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<p>&nbsp;</p>

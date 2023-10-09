@@ -1,0 +1,58 @@
+﻿ <style>
+     body {
+         background-image: url('../Image/pexels-anna-belousove edit.jpg');
+         background-size: cover;
+         background-repeat: no-repeat;
+     }
+</style>
+<script src="../Scripts/AngularJSController/listcontroller.js"></script>
+<body ng-app="app">
+    <div ng-controller="ListController">
+        <section class="well">
+            <h3 style="text-align: center; ">Your Item List</h3>          
+            <table ng-show="true" class="table table-hover">
+                <tr>
+                    <th>Description</th>
+                    <th>Supplier</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                    <tr ng-class="" ng-animate="'slide'" ng-repeat="item in vm.shopItem ">
+                        <td>
+                            <p style="font-weight:bold;">{{item.name
+                }}
+            </p>
+                            <p>{{item.description}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.supplier[0].name}}</p>
+                        </td>
+                        <td>
+                            <p>${{item.price}}</p>
+                        </td>
+                        <td>
+                            <p> Items</p>
+                        </td>
+                        <!--<td>
+                    <button class="btn btn-warning" ng-click="vm.deleteFromCart($index)">Delete from Cart</button>
+                </td>-->
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Price: {{vm.totalPrice}}</td>
+                        <td>
+                            <button class="btn btn-success" ng-click="vm.confirmCheckout()">Checkout</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total Price: {{vm.totalPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<p><a href="#!/login" class="btn btn-primary">Logout</a></p>-->
+        </section>
+        </div>
+</body>

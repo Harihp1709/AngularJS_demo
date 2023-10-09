@@ -1,0 +1,82 @@
+﻿<style>
+    body {
+        background-image: url('../Image/pexels-anna-belousove edit.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<script src="../Scripts/AngularJSController/listcontroller.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+<script src="../Scripts/AngularJSController/getitemcontroller.js"></script>
+<body ng-app="app">
+	<div ng-controller="ListController">
+		<section class="well">
+			<h3>Your Shopping item</h3>
+			<div>
+				<span>{{vm.sharedData}}</span>
+				<span class="glyphicon glyphicon-shopping-cart"></span>
+				<span>
+					{{vm.shoppingCartItem.length}} Items
+				</span>
+				<span class="bold">${{vm.shoppingCartItem.totalPrice}}</span>
+				<button ng-disabled="!vm.shoppingCartItem.length" ng-show="!vm.isCheckoutPage" ng-click="vm.checkout()" class="btn btn-primary"> Checkout</button>
+				<button ng-show="vm.isCheckoutPage" ng-click="vm.backToList()" class="btn btn-success"> Back to Store</button>
+			</div>
+		</section>
+		<!--<p><a href="#!/login" class="btn btn-primary">Logout</a></p>-->
+		<section class="well">
+			<div class="search">
+				<h3>Sale Items</h3>
+				<label>search: </label>
+				<input ng-model="query" placeholder="Search for Items" autofocus>
+
+				<label class="formgroup">
+					by:
+					<select ng-model="listOrder">
+						<option value="name">Name</option>
+						<option value="price">Price</option>
+					</select>
+				</label>
+
+				<label class="formgroup">
+					<input type="radio" ng-model="direction" name="direction" checked>
+					Ascending
+				</label>
+				<label class="formgroup">
+					<input type="radio" ng-model="direction" name="direction" value="reverse">
+					Descending
+				</label>
+
+			</div>
+
+			<table ng-show="vm.itemList.length>0" class="table table-hover">
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tbody>
+					<!--<tr ng-class="" ng-animate="'slide'" ng-repeat="item in vm.itemList">-->
+					<tr ng-class="" ng-animate="'slide'" ng-repeat="item in vm.itemList | filter: query | orderBy: listOrder:direction">
+
+						<td>
+							<p style="font-weight:bold;">{{item.name}}</p>
+							<p>{{item.description}}</p>
+						</td>
+						<td>
+							<p>${{item.price}}</p>
+						</td>
+						<td>
+							<button class="btn btn-success" ng-click="vm.addToCart(item)">Add 1 Item to Cart</button>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+</body>
+
+

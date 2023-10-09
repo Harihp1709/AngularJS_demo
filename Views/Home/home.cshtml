@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "home";
+}
+<style>
+    body {
+        background-image: url('../Image/florencia-viadana-1J8k0qqUfYY-unsplash.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<h2>home</h2>
+<script src="~/Scripts/AngularJSController/app.js"></script>
+<h3>Hi {{vm.user.firstName}}!</h3>
+<li>{{vm.IsAuth}}</li>
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li ng-repeat="user in vm.allUsers">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<p>&nbsp;</p>
+@*<p><a href="./login" class="btn btn-primary">Logout</a></p>*@

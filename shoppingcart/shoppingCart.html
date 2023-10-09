@@ -1,0 +1,15 @@
+﻿<script src="../Scripts/AngularJSController/listcontroller.js"></script>
+<body ng-app="app">
+    <div ng-controller="ListController">        
+        <section class="well">
+            <h1>Your Shopping Cart</h1>
+            <div>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span>{{vm.shopItem}} Items</span>
+                <span class="bold">${{vm.shopItem}}</span>
+                <button ng-disabled="!vm.shopItem" ng-show="!vm.isCheckoutPage" ng-click="vm.checkout()" class="btn btn-success"> Checkout</button>
+                <button ng-show="vm.isCheckoutPage" ng-click="vm.backToList()" class="btn btn-success"> Back to Store</button>
+            </div>
+        </section>
+        </div>
+    </body>
